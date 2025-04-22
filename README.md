@@ -1,4 +1,4 @@
-# RaspberryPi Automation Project
+# Automation Project
 
 This project is designed to automate the setup and configuration of a Raspberry Pi environment using Ansible.
 It includes roles for installing Docker and essential software, as well as managing services and configurations.
