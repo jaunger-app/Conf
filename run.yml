@@ -1,0 +1,7 @@
+---
+- name: 'Conf'
+  hosts: local
+  roles: 
+    - role: docker
+    - role: software
+  

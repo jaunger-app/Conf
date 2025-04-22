@@ -1,0 +1,15 @@
+- name: Install and Update Software
+  ansible.builtin.debug:
+    msg:
+      - "Updater"
+
+- name: Update and upgrade all packages to the latest version
+  ansible.builtin.apt:
+    update_cache: true
+    upgrade: dist
+
+- name: Basic Software
+  ansible.builtin.apt:
+    name:
+      - git
+      - curl
