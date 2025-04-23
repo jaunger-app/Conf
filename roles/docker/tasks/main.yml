@@ -4,7 +4,7 @@
   ansible.builtin.copy:
     src: installer.sh
     dest: /root/
-    mode: '755'
+    mode: '0755'
 
 - name: führe installer.sh aus
   ansible.builtin.command:
