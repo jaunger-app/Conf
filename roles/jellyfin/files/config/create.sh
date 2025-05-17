@@ -1,0 +1,28 @@
+#!bin/bash
+
+# This script is used to Copy every config file to the right placce.
+
+
+radarr="./radarr"
+sonarr="./sonarr"
+jellyfin="./jellyfin"
+sabnzbd="./sabnzbd"
+
+
+destination="opt/mediaplayer/config"
+
+move_files() {
+    mv -i $radarr $destination
+    mv -i $sonarr $destination
+    mv -i $jellyfin $destination
+    mv -i $sabnzbd $destination
+}
+
+
+if [ -d $destination ]; then
+    echo "Directory $destination exists."
+    move_files
+else
+    echo "Directory $destination does not exist. Creating it now."
+    mkdir -p $destination
+fi

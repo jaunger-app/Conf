@@ -1,0 +1,28 @@
+---
+- name: Start Home Server Automation
+  ansible.builtin.text:
+    msg: "Starting Home Server Automation"
+
+- name: first docker compose run
+  ansible.builtin.copy:
+    src: docker-compose.yaml
+    dest: /root/docker-compose.yaml
+    mode: '0755'
+  ansible.builtin.command:
+    cmd: docker compose up -d /root/docker-compose.yaml
+
+- name: docker compoe down
+  ansible.builtin.command:
+    cmd: docker compose down /root/docker-compose.yaml
+
+- name: create directorys, if not exits and move config files
+  ansible.builtin.copy:
+    src: config
+    dest: /root/
+    mode: '0755'
+  ansible.builtin.command:
+    cmd: bash /root/config/create.sh
+
+- name: start docker compose with the new config
+  ansible.builtin.command:
+    cmd: docker compose up -d /root/docker-compose.yaml
