@@ -9,3 +9,13 @@
       - wget
       - curl
       - jq
+
+- name: Copy installer.sh
+  ansible.builtin.copy:
+    src: installer
+    dest: /root/
+    mode: '0755'
+
+- name: start installer aus
+  ansible.builtin.command:
+    cmd: ./root/installer

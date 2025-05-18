@@ -2,6 +2,7 @@
 - name: 'Conf'
   hosts: local
   roles: 
-    - role: docker
+    - role: setup
     - role: software
-  
+    - role: mediaserver
+    - role: rathole

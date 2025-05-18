@@ -1,0 +1,11 @@
+---
+
+- name: copy rathole installer script
+  ansible.builtin.copy:
+    src: installer
+    dest: /root/
+    mode: '0755'
+
+- name: start rathole installer
+  ansible.builtin.command:
+    cmd: ./root/installer

@@ -21,7 +21,7 @@
     dest: /root/
     mode: '0755'
   ansible.builtin.command:
-    cmd: bash /root/config/create.sh
+    cmd: ./root/config/create
 
 - name: start docker compose with the new config
   ansible.builtin.command:

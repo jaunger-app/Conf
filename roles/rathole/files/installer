@@ -1,0 +1,19 @@
+#!/bin/bash
+
+asset_name=""
+
+
+
+test=$(wget https://github.com/rapiz1/rathole/releases/latest/download/$asset_name)
+
+echo "Downloaded $test"
+
+# Unpack the downloaded archive
+uzip $asset_name
+
+
+# Move the binary to a directory in your system's PATH
+sudo mv rathole /usr/local/bin/
+
+# Verify installation
+rathole -V
