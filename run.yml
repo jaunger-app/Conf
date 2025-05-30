@@ -1,8 +1,9 @@
 ---
 - name: 'Conf'
   hosts: local
+  become: true
+
   roles: 
-    - role: setup
     - role: software
     - role: mediaserver
-    - role: rathole
+    #- role: rathole

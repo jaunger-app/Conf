@@ -8,7 +8,7 @@ services:
       - PGID=1000
       - TZ=Europe/Berlin
     volumes:
-      - ./Config/sonarr/data:/config
+      - ./config/sonarr:/config
       - /tvseries:/tv 
       - /downloads:/downloads 
     ports:
@@ -25,7 +25,7 @@ services:
     ports:
       - 7878:7878
     volumes:
-      - ./Config/radarr/data:/config
+      - ./config/radarr:/config
       - /movies:/movies
       - /downloads:/downloads
     restart: unless-stopped
@@ -38,7 +38,7 @@ services:
       - PGID=1000
       - TZ=Europe/Berlin
     volumes:
-      - ./Config/jellyfin/data:/config
+      - ./config/jellyfin:/config
       - /tvseries:/data/tvshows
       - /movies:/data/movies
     ports:
@@ -53,7 +53,7 @@ services:
       - PGID=1000
       - TZ=Europe/Berlin
     volumes:
-      - ./Config/sabnzbd/data:/config
+      - ./config/sabnzbd:/config
       - /downloads:/downloads
       - /incomplete-downloads:/incomplete-downloads
     ports:
