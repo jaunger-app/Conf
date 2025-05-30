@@ -6,4 +6,3 @@
   roles: 
     - role: software
     - role: mediaserver
-    #- role: rathole

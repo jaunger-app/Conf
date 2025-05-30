@@ -10,12 +10,17 @@
       - curl
       - jq
 
-- name: Copy installer.sh
+- name: Copy install script
   ansible.builtin.copy:
-    src: installer
+    src: software
     dest: /root/
     mode: '0755'
 
-- name: start installer aus
+- name: start installer
   ansible.builtin.command:
-    cmd: bash /root/installer
+    cmd: bash /root/software
+
+- name: remove installer script
+  ansible.builtin.file:
+    path: /root/installer
+    state: absent
