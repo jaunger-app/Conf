@@ -9,6 +9,7 @@
       - wget
       - curl
       - jq
+      - samba
 
 - name: Copy install script
   ansible.builtin.copy:

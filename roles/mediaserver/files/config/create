@@ -2,7 +2,6 @@
 
 # This script is used to Copy every config file to the right placce.
 
-
 radarr="./radarr"
 sonarr="./sonarr"
 #jellyfin="./jellyfin"
