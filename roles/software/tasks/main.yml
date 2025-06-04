@@ -10,6 +10,7 @@
       - curl
       - jq
       - samba
+      - ufw
 
 - name: Copy install script
   ansible.builtin.copy:
