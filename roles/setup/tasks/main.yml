@@ -10,10 +10,10 @@
     owner: root
     mode: '0644'
 
-- name: Restart service ssh
-  ansible.builtin.service:
-    name: sshd
-    state: restarted
+#- name: Restart service ssh
+#   ansible.builtin.service:
+#    name: sshd
+#    state: restarted
 
 - name: Set authorized key taken from file
   ansible.posix.authorized_key:
