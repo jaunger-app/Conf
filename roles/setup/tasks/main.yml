@@ -12,7 +12,7 @@
 
 - name: Restart service ssh
   ansible.builtin.service:
-    name: ssh
+    name: sshd
     state: restarted
 
 - name: Set authorized key taken from file
