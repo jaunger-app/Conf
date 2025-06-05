@@ -4,6 +4,6 @@
   become: true
 
   roles: 
-    - role: setup
     - role: software
+    - role: setup
     - role: mediaserver
