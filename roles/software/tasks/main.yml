@@ -11,15 +11,15 @@
       - jq
       - samba
       - ufw
-      - ssh
+   #   - ssh
     state: present
     update_cache: yes
     
-- name: Ensure SSH service is enabled and running
-  service:
-    name: ssh
-    state: started
-    enabled: yes
+#- name: Ensure SSH service is enabled and running
+#  service:
+#    name: ssh
+#    state: started
+#    enabled: yes
 
 - name: Copy install script
   ansible.builtin.copy:
