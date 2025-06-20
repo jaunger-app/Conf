@@ -2,8 +2,9 @@
 
 
 yamlFiles=(
-    "media.yaml"
-    "server.yaml"
+    "media.yml"
+    "ssh.yml"
+    "run.yml"
 )
 
 read -p "Enter the IP address of the server: " server_ip

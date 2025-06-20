@@ -3,8 +3,6 @@
     msg: "Setting up server infrastructure with Ansible"
 
 
-
-
 - name: start ufw
   community.general.ufw:
     state: enabled

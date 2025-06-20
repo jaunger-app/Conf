@@ -1,9 +1,7 @@
 ---
-- name: 'Conf'
+- name: 'Conf-SSH'
   become: true
 
   roles: 
     - role: software
-    - role: setup
     - role: ssh
-    - role: mediaserver
