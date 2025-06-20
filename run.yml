@@ -6,4 +6,5 @@
   roles: 
     - role: software
     - role: setup
+    - role: ssh
     - role: mediaserver

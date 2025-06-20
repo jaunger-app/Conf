@@ -1,0 +1,31 @@
+#!/bin/bash
+
+
+yamlFiles=(
+    "media.yaml"
+    "server.yaml"
+)
+
+read -p "Enter the IP address of the server: " server_ip
+read -p "Enter the yaml file to use (media.yaml/server.yaml): " yaml_file
+read -p "enter the path of your Private Key: " private_key_path
+
+if [[ ! " ${yamlFiles[@]} " =~ " ${yaml_file} " ]]; then
+    echo "Invalid yaml file. Please choose from: ${yamlFiles[*]}"
+    exit 1
+fi
+if [[ -z "$server_ip" ]]; then
+    echo "Server IP cannot be empty."
+    exit 1
+fi
+if [[ ! -f "$private_key_path" ]]; then
+    echo "Private key file does not exist."
+    exit 1
+fi
+
+cp -a $private_key_path /root/.ssh/id_rsa
+chmod 600 /root/.ssh/id_rsa
+
+echo "[myhosts] $(server_ip) " > hosts.ini
+
+ansible-playbook -i hosts.ini "$yaml_file"
