@@ -3,10 +3,15 @@
     msg: "Setting up server infrastructure with Ansible"
 
 
-- name: start ufw
-  community.general.ufw:
-    state: enabled
-    policy: deny
+- name: set neofetch as motd
+  ansible.builtin.command:
+    cmd: sudo bash -c $'echo "neofetch" >> /etc/profile.d/mymotd.sh && chmod +x /etc/profile.d/mymotd.sh' && sudo rm -r /etc/update-motd.d && sudo mkdir -p /etc/update-motd.d
+
+
+#- name: start ufw
+#  community.general.ufw:
+#    state: enabled
+#    policy: deny
 
 
 - name: Add samba share configuration to smb.conf
