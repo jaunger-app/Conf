@@ -6,11 +6,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Berlin
+      - TZ=${TIME_ZONE}
     volumes:
       - ./config/sonarr:/config
-      - /tvseries:/tv 
-      - /downloads:/downloads 
+      - ${TVSHOWS}:/tv 
+      - ${DOWNLOADS}:/downloads 
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -21,13 +21,13 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Berlin
+      - TZ=${TIME_ZONE}
     ports:
       - 7878:7878
     volumes:
       - ./config/radarr:/config
-      - /movies:/movies
-      - /downloads:/downloads
+      - ${MOVIES}:/movies
+      - ${DOWNLOADS}:/downloads
     restart: unless-stopped
 
   jellyfin:
@@ -36,11 +36,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Berlin
+      - TZ=${TIME_ZONE}
     volumes:
       - ./config/jellyfin:/config
-      - /tvseries:/data/tvshows
-      - /movies:/data/movies
+      - ${TVSHOWS}:/data/tvshows
+      - ${MOVIES}:/data/movies
     ports:
       - 8096:8096
     restart: unless-stopped
@@ -51,11 +51,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Berlin
+      - TZ=${TIME_ZONE}
     volumes:
       - ./config/sabnzbd:/config
-      - /downloads:/downloads
-      - /incomplete-downloads:/incomplete-downloads
+      - ${DOWNLOADS}:/downloads
+      - ${INCOMPLETE_DOWNLOADS}:/incomplete-downloads
     ports:
       - 8080:8080
     restart: unless-stopped

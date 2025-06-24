@@ -1,3 +1,4 @@
+---
 - name: Server Infrastructure Setup
   ansible.builtin.debug:
     msg: "Setting up server infrastructure with Ansible"

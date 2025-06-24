@@ -9,15 +9,17 @@
     dest: /root/docker-compose.yaml
     mode: '0755'
 
-- name: create directorys, if not exits and move config files
+- name: copy config files
   ansible.builtin.copy:
     src: config
     dest: /root/
     mode: '0755'
 
-- name: start create file
-  ansible.builtin.command:
-    cmd: bash /root/config/create
+- name: copy environment file
+  ansible.builtin.copy:
+    src: .env
+    dest: /root/.env
+    mode: '0744'
 
 - name: start docker compose with config
   ansible.builtin.command:

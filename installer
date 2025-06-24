@@ -8,7 +8,7 @@ yamlFiles=(
 )
 
 read -p "Enter the IP address of the server: " server_ip
-read -p "Enter the yaml file to use (media.yaml/server.yaml): " yaml_file
+read -p "Enter the config to use (media.yml/run.yml/ssh.yml): " yaml_file
 read -p "enter the path of your Private Key: " private_key_path
 
 if [[ ! " ${yamlFiles[@]} " =~ " ${yaml_file} " ]]; then
@@ -24,8 +24,8 @@ if [[ ! -f "$private_key_path" ]]; then
     exit 1
 fi
 
-cp -a $private_key_path /root/.ssh/id_rsa
-chmod 600 /root/.ssh/id_rsa
+cp -a $private_key_path $(PWD)/Conf/roles/ssh/files
+chmod 600 $(PWD)/Conf/roles/ssh/files
 
 echo "[myhosts] $(server_ip) " > hosts.ini
 
