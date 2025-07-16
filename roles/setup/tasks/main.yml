@@ -2,29 +2,49 @@
 - name: Server Infrastructure Setup
   ansible.builtin.debug:
     msg: "Setting up server infrastructure with Ansible"
-
-
+  vars:
+    ufw_allow_ports: []
+  task:
+    - name: Parse ufw_ports variable into list
+      set_fact:
+        ufw_allow_ports: "{{ ufw_ports.split(',') if ufw_ports is defined else [] }}"
+  
 - name: set neofetch as motd
   ansible.builtin.command:
     cmd: sudo bash -c $'echo "neofetch" >> /etc/profile.d/mymotd.sh && chmod +x /etc/profile.d/mymotd.sh' && sudo rm -r /etc/update-motd.d && sudo mkdir -p /etc/update-motd.d
 
+- name: Allow ports via ufw
+  community.general.ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  loop: "{{ ufw_allow_ports }}"
 
-#- name: start ufw
-#  community.general.ufw:
-#    state: enabled
-#    policy: deny
+- name: allow ssh
+  community.general.ufw:
+    rule: allow
+    port: 22
+
+- name: set ufw logging on
+  community.general.ufw:
+    logging: true
 
 
-- name: Add samba share configuration to smb.conf
-  blockinfile:
-    path: "/etc/samba/smb.conf"
-    block: |
-      [Storage]
-      path = /mnt/storage
-      public = yes
-      writeable = yes
+- name: start ufw
+  community.general.ufw:
+    state: enabled
 
-- name: Restart Samba service
-  service:
-    name: smbd
-    state: restarted
+
+#- name: Add samba share configuration to smb.conf
+#  blockinfile:
+#    path: "/etc/samba/smb.conf"
+#    block: |
+#      [Storage]
+#     path = /mnt/storage
+#      public = yes
+#      writeable = yes
+#
+#- name: Restart Samba service
+#  service:
+#    name: smbd
+#    state: restarted
